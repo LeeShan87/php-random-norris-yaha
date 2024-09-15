@@ -1,0 +1,18 @@
+@jsonApi = https://jsonplaceholder.typicode.com
+@icndbApi = https://api.chucknorris.io
+
+@api = http://localhost:8080
+
+###
+# get user one posts
+
+GET {{jsonApi}}/users/1/posts HTTP/1.1
+
+###
+# get user two posts
+
+GET {{jsonApi}}/users/2/posts HTTP/1.1
+
+###
+# get random Chuck Norris Joke
+GET {{icndbApi}}/jokes/random HTTP/1.1
