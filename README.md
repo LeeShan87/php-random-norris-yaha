@@ -6,7 +6,23 @@ YAHA is an indicator for Yet Another Home Assignment.
 
 ## Setup
 
-TODO
+The application will be able to run with [tilt.dev](https://tilt.dev)
+
+Start the application
+
+```bash
+tilt up
+```
+
+Stop the application
+
+```bash
+tilt down
+```
+
+Custom resources:
+
+- Test: Automatically run tests on file changes
 
 ## Docs
 
