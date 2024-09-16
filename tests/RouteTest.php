@@ -4,7 +4,7 @@ namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class AppTest extends WebTestCase
+class RouteTest extends WebTestCase
 {
     public function testHomePage(): void
     {
