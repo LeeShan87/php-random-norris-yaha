@@ -2,9 +2,12 @@
 
 namespace App\Tests;
 
+use App\Service\ICNDBApi;
 use App\Dto\MessageResult;
 use PHPUnit\Framework\TestCase;
 use App\Service\MessageProvider;
+use App\Service\JsonPlaceholderApi;
+use Symfony\Component\HttpClient\MockHttpClient;
 
 class MessageProviderTest extends TestCase
 {
@@ -42,7 +45,31 @@ class MessageProviderTest extends TestCase
                 message: 'This is a another random message from icndb'
             ),
         ];
-        $messageProvider = new MessageProvider();
+        $user1Api = $this->createJsonPlaceholderFetcherForUserOne();
+        $user2Api = $this->createJsonPlaceholderFetcherForUserTwo();
+        $chockApi = $this->createIcndbFetcher();
+        $messageProvider = new MessageProvider($user1Api, $user2Api, $chockApi);
         $this->assertEquals($expectedResult, $messageProvider->messages());
+    }
+
+    private function createJsonPlaceholderFetcherForUserOne(): JsonPlaceholderApi
+    {
+        $mockClient = new MockHttpClient();
+        $jsonPlaceholder = new JsonPlaceholderApi($mockClient);
+        return $jsonPlaceholder;
+    }
+
+    private function createJsonPlaceholderFetcherForUserTwo(): JsonPlaceholderApi
+    {
+        $mockClient = new MockHttpClient();
+        $jsonPlaceholder = new JsonPlaceholderApi($mockClient);
+        return $jsonPlaceholder;
+    }
+
+    private function createIcndbFetcher(): ICNDBApi
+    {
+        $mockClient = new MockHttpClient();
+        $api = new ICNDBApi($mockClient);
+        return $api;
     }
 }
